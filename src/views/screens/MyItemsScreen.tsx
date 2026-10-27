@@ -4,7 +4,7 @@ import { palette as C } from "@/constants/palette";
 import ActionButton from "@/views/components/ActionButton";
 import IconTile from "@/views/components/IconTile";
 import ItemProgress from "@/views/components/ItemProgress";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/views/components/NavBar";
 import { useMyItemsViewModel } from "@/viewmodels/useMyItemsViewModel";
 
 export default function MyItemsScreen() {

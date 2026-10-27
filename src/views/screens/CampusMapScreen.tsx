@@ -2,7 +2,7 @@ import { View, Text, TextInput, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ChevronLeft } from "lucide-react-native";
 import colors from "@/constants/colors";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/views/components/NavBar";
 import { useCampusMapViewModel } from "@/viewmodels/useCampusMapViewModel";
 
 export default function CampusMapScreen() {
