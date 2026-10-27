@@ -28,6 +28,10 @@ export default function Index() {
       <Link href="/chat">
         <Text className="text-white mt-4">Open Chat</Text>
       </Link>
+
+      <Link href="/itemDetails">
+        <Text className="text-white mt-4">Open Item Details</Text>
+      </Link>
     </SafeAreaView>
   );
 }
