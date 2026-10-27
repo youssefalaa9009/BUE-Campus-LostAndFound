@@ -1,6 +1,4 @@
-// BUE campus places, used by the location search (Report an item) and the Campus map.
 export const CAMPUS_LOCATIONS = [
-    // Buildings
     { id: "A", name: "Building A", detail: "Engineering" },
     { id: "B", name: "Building B", detail: "Engineering" },
     { id: "C", name: "Building C", detail: "Main Building" },
@@ -18,7 +16,6 @@ export const CAMPUS_LOCATIONS = [
     { id: "15", name: "Building 15", detail: "Energy" },
     { id: "17", name: "Building 17", detail: "Nursing" },
 
-    // Other places
     { id: "SLC", name: "SLC", detail: "Library" },
     { id: "food-court", name: "Food Court", detail: "Food & restaurants" },
     { id: "la-poire", name: "La Poire Café", detail: "Café" },

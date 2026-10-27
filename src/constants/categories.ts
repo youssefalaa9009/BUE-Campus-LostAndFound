@@ -1,6 +1,5 @@
 import { IdCard, KeyRound, Headphones, Calculator, Wallet, Box } from "lucide-react-native";
 
-// Item categories, shared by the Report screen (tiles) and the Campus map (pin icons)
 export const CATEGORIES = [
     { id: "id-card",    label: "ID Card",    icon: IdCard },
     { id: "keys",       label: "Keys",       icon: KeyRound },
