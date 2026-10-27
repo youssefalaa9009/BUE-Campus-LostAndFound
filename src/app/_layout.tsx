@@ -1,13 +1,20 @@
 import "../../global.css";
 import { Stack } from "expo-router";
 
-export default function RootLayout() {
-  return <Stack>
+const tabScreen = { animation: "none", gestureEnabled: false } as const;
 
-<Stack.Screen name="reportItem" options={{ presentation: "modal", headerShown: false }} />
-<Stack.Screen name="campusMap" options={{ headerShown: false }} />
-<Stack.Screen name="chat" options={{ headerShown: false }} />
-<Stack.Screen name="itemDetails" options={{ headerShown: false }} />
-<Stack.Screen name="myItems" options={{ headerShown: false }} />
-  </Stack>;
+export default function RootLayout() {
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="Homescreen" options={tabScreen} />
+      <Stack.Screen name="campusMap" options={tabScreen} />
+      <Stack.Screen name="myItems" options={tabScreen} />
+      <Stack.Screen name="reportItem" options={{ presentation: "modal" }} />
+      <Stack.Screen name="itemDetails" />
+      <Stack.Screen name="chat" />
+      <Stack.Screen name="notifications" />
+      <Stack.Screen name="QRCodeScan" />
+    </Stack>
+  );
 }

@@ -3,6 +3,7 @@ import { router } from "expo-router";
 import { MAP_BUILDINGS } from "@/constants/mapData";
 import { CATEGORIES } from "@/constants/categories";
 import { getFoundItems } from "@/services/itemsService";
+import { goToTab } from "@/viewmodels/tabNavigation";
 
 function timeAgo(date: Date) {
     const minutes = Math.round((Date.now() - date.getTime()) / 60000);
@@ -47,6 +48,7 @@ export function useCampusMapViewModel() {
         foundCount: foundItems.length,
         selectedCard,
         selectPin: setSelectedId,
-        goBack: () => router.back(),
+        goBack: () => (router.canGoBack() ? router.back() : goToTab("Home")),
+        goToTab,
     };
 }

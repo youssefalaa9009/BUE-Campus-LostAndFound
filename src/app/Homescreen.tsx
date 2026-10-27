@@ -11,6 +11,7 @@ import { Bell, Headphones, IdCard, Search, Filter } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import NavBar from "../components/NavBar";
 import { router } from "expo-router";
+import { goToTab } from "@/viewmodels/tabNavigation";
 
 export default function Homescreen() {
   return (
@@ -116,7 +117,7 @@ export default function Homescreen() {
       </ScrollView>
       <NavBar
         activeTab="Home"
-        onTabPress={(tab) => console.log("Selected:", tab)}
+        onTabPress={goToTab}
       />
     </SafeAreaView>
   );

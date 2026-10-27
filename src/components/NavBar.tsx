@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { House, Map as MapIcon, Package, Plus, User } from "lucide-react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 
 type NavBarProps = {
@@ -17,8 +18,9 @@ export default function NavBar({
     { name: "My Items", icon: Package },
     { name: "Profile", icon: User },
   ];
+  const insets = useSafeAreaInsets();
   return (
-    <View style={styles.navBar}>
+    <View style={[styles.navBar, { paddingBottom: 10 + insets.bottom }]}>
       {tabs.slice(0, 2).map((tab) => (
         <TouchableOpacity
           key={tab.name}

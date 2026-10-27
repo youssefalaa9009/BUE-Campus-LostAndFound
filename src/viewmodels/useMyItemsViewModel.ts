@@ -3,6 +3,7 @@ import { Alert } from "react-native";
 import { router, useFocusEffect } from "expo-router";
 import { MyItem, MyItemStatus } from "@/models/myItem";
 import { getMyItems } from "@/services/myItemsService";
+import { goToTab } from "@/viewmodels/tabNavigation";
 
 const TABS: MyItemStatus[] = ["Lost", "Found"];
 
@@ -58,5 +59,6 @@ export function useMyItemsViewModel() {
     cards,
     openDetails,
     reportItem: () => router.push("/reportItem"),
+    goToTab,
   };
 }

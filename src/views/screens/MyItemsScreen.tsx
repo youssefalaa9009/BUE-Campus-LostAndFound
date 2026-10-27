@@ -4,13 +4,14 @@ import { palette as C } from "@/constants/palette";
 import ActionButton from "@/views/components/ActionButton";
 import IconTile from "@/views/components/IconTile";
 import ItemProgress from "@/views/components/ItemProgress";
+import NavBar from "@/components/NavBar";
 import { useMyItemsViewModel } from "@/viewmodels/useMyItemsViewModel";
 
 export default function MyItemsScreen() {
   const vm = useMyItemsViewModel();
 
   return (
-    <SafeAreaView style={styles.flex}>
+    <SafeAreaView style={styles.flex} edges={["top", "left", "right"]}>
       <ScrollView style={styles.page} contentContainerStyle={styles.myItemsContent} showsVerticalScrollIndicator={false}>
         <View style={styles.listHeader}><Text style={styles.pageTitle}>My items</Text><Pressable style={styles.addButton} onPress={vm.reportItem}><Text style={styles.addPlus}>＋</Text></Pressable></View>
         <View style={styles.segment}>
@@ -32,6 +33,7 @@ export default function MyItemsScreen() {
         ))}
         <View style={{ height: 18 }} />
       </ScrollView>
+      <NavBar activeTab="My Items" onTabPress={vm.goToTab} />
     </SafeAreaView>
   );
 }
