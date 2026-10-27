@@ -166,28 +166,32 @@ export default function ReportItemScreen() {
                     </View>
                 )}
 
-                {/* 10. two quick tips card - youssef241784 */}
-                <View className="border border-line bg-white gap-3 rounded-3xl px-4 py-3">
-                    <Text className="font-semibold text-ink">Two quick tips</Text>
-                    <Text className="text-sm text-muted">Don't show names, card numbers, or other details in photos. The owner will prove it's theirs with those.</Text>
-                    <Text className="text-sm text-muted">Wallets, phones, and laptops are safest at the security desk.</Text>
-                </View>
+                {vm.mode === "found" && (
+                    <>
+                        {/* 10. two quick tips card - youssef241784 */}
+                        <View className="border border-line bg-white gap-3 rounded-3xl px-4 py-3">
+                            <Text className="font-semibold text-ink">Two quick tips</Text>
+                            <Text className="text-sm text-muted">Don't show names, card numbers, or other details in photos. The owner will prove it's theirs with those.</Text>
+                            <Text className="text-sm text-muted">Wallets, phones, and laptops are safest at the security desk.</Text>
+                        </View>
 
-                {/* 11. security question - youssef241784 */}
-                <View className="border border-line bg-warning gap-3 rounded-3xl px-4 py-3">
-                    <Text className="font-semibold text-ink">Security Question</Text>
-                    <Text className="text-sm text-muted">Ask something only the owner would know, like a sticker, engraving or something that only the owner of this item may know. They must answer correctly before they can claim it.</Text>
-                    <FormInput
-                        value={vm.securityQuestion}
-                        onChangeText={vm.setSecurityQuestion}
-                        placeholder="e.g. What's attached to the keyring"
-                    />
-                    <FormInput
-                        value={vm.securityAnswer}
-                        onChangeText={vm.setSecurityAnswer}
-                        placeholder="Answer (only you can see this)"
-                    />
-                </View>
+                        {/* 11. security question - youssef241784 */}
+                        <View className="border border-line bg-warning gap-3 rounded-3xl px-4 py-3">
+                            <Text className="font-semibold text-ink">Security Question</Text>
+                            <Text className="text-sm text-muted">Ask something only the owner would know, like a sticker, engraving or something that only the owner of this item may know. They must answer correctly before they can claim it.</Text>
+                            <FormInput
+                                value={vm.securityQuestion}
+                                onChangeText={vm.setSecurityQuestion}
+                                placeholder="e.g. What's attached to the keyring"
+                            />
+                            <FormInput
+                                value={vm.securityAnswer}
+                                onChangeText={vm.setSecurityAnswer}
+                                placeholder="Answer (only you can see this)"
+                            />
+                        </View>
+                    </>
+                )}
 
                 {/* 12. post found item button - youssef241784 */}
                 <Pressable onPress={() => {}} className="bg-primary rounded-3xl h-14 items-center justify-center">
