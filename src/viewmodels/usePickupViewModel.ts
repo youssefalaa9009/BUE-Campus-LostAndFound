@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { router } from "expo-router";
+import { goBackOrHome } from "@/viewmodels/tabNavigation";
 
 type Role = "Owner" | "Finder";
 
@@ -16,6 +16,6 @@ export function usePickupViewModel() {
       : "Scan the Owner's code when you meet. Once it's scanned, the keys are marked as returned.",
     pickupCode: PICKUP_CODE,
     qrValue: `BUE-LOST-FOUND-PICKUP- ${PICKUP_CODE}`,
-    goBack: () => (router.canGoBack() ? router.back() : router.replace("/Homescreen")),
+    goBack: goBackOrHome,
   };
 }

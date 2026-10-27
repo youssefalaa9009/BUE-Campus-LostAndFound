@@ -1,8 +1,8 @@
 import { View, Text, TextInput, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ChevronLeft } from "lucide-react-native";
 import colors from "@/constants/colors";
 import NavBar from "@/views/components/NavBar";
+import BackButton from "@/views/components/BackButton";
 import { useCampusMapViewModel } from "@/viewmodels/useCampusMapViewModel";
 
 export default function CampusMapScreen() {
@@ -84,9 +84,7 @@ export default function CampusMapScreen() {
             {/* top (back and search bar) - youssef241784 */}
             <View className="absolute top-16 left-5 right-5 gap-3">
                 <View className="flex-row gap-3">
-                    <Pressable onPress={vm.goBack} className="size-12 rounded-2xl bg-white items-center justify-center">
-                        <ChevronLeft size={22} color={colors.ink} />
-                    </Pressable>
+                    <BackButton onPress={vm.goBack} />
                     <TextInput
                         placeholder="Search buildings or items"
                         placeholderTextColor={colors.muted}

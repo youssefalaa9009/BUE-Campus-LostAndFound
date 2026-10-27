@@ -1,9 +1,11 @@
-import { View, Text, ScrollView, Pressable, TextInput, Platform } from "react-native";
+import { View, Text, ScrollView, Pressable, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { X, Camera, MapPin } from "lucide-react-native";
 import { Image } from "expo-image";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import colors from "@/constants/colors";
+import FieldLabel from "@/views/components/FieldLabel";
+import FormInput from "@/views/components/FormInput";
 import { useReportItemViewModel } from "@/viewmodels/useReportItemViewModel";
 
 export default function ReportItemScreen() {
@@ -60,7 +62,7 @@ export default function ReportItemScreen() {
 
                 {/* 4. "category" label + 6 tiles - youssef241784 */}
                 <View className="gap-3">
-                    <Text className="font-semibold text-ink">Category</Text>
+                    <FieldLabel>Category</FieldLabel>
                     <View className="flex-row flex-wrap gap-3">
                         {vm.categories.map((item) => (
                             <Pressable
@@ -77,33 +79,29 @@ export default function ReportItemScreen() {
 
                 {/* 5. "item name" label + textinput - youssef241784 */}
                 <View className="gap-3">
-                    <Text className="font-semibold text-ink">Item Name</Text>
-                    <TextInput
+                    <FieldLabel>Item Name</FieldLabel>
+                    <FormInput
                         value={vm.itemName}
                         onChangeText={vm.setItemName}
                         placeholder="e.g. Car keys with a blue tag"
-                        placeholderTextColor={colors.muted}
-                        className="bg-white border border-line rounded-3xl px-4 h-14 text-ink"
                     />
                 </View>
 
                 {/* 6. "description (optional)" label + multiline textinput - youssef241784 */}
                 <View className="gap-3">
-                    <Text className="font-semibold text-ink">Description (Optional)</Text>
-                    <TextInput
+                    <FieldLabel>Description (Optional)</FieldLabel>
+                    <FormInput
                         value={vm.description}
                         onChangeText={vm.setDescription}
                         placeholder="Describe the item in more detail.."
-                        placeholderTextColor={colors.muted}
                         textAlignVertical="top"
                         multiline
-                        className="bg-white border border-line rounded-3xl h-24 px-4 py-3 text-ink"
                     />
                 </View>
 
                 {/* 7. "when did you find it?" + date picker - youssef241784 */}
                 <View className="gap-3">
-                    <Text className="font-semibold text-ink">{vm.mode === "found" ? "When did you find it?" : "When did you lose it?"}</Text>
+                    <FieldLabel>{vm.mode === "found" ? "When did you find it?" : "When did you lose it?"}</FieldLabel>
                     <Pressable onPress={vm.openPicker} className="bg-white border border-line rounded-3xl h-14 px-4 justify-center">
                         <Text className="text-ink">{vm.dateLabel}</Text>
                     </Pressable>
@@ -122,14 +120,13 @@ export default function ReportItemScreen() {
 
                 {/* 8. where did you find it? + pin button - youssef241784 */}
                 <View className="gap-3">
-                    <Text className="font-semibold text-ink">{vm.mode === "found" ? "Where did you find it?" : "Where did you lose it?"}</Text>
+                    <FieldLabel>{vm.mode === "found" ? "Where did you find it?" : "Where did you lose it?"}</FieldLabel>
                     <View className="flex-row gap-3">
-                        <TextInput
+                        <FormInput
                             value={vm.location}
                             onChangeText={vm.setLocation}
                             placeholder="Search campus locations"
-                            placeholderTextColor={colors.muted}
-                            className="flex-1 bg-white border border-line rounded-3xl h-14 px-4 text-ink"
+                            className="flex-1"
                         />
                         <Pressable onPress={() => {}} className="size-14 rounded-3xl bg-mint items-center justify-center">
                             <MapPin size={22} color={colors.primary} />
@@ -151,7 +148,7 @@ export default function ReportItemScreen() {
                 {/* 9. where is the item now? (2 options) only if it is found (not lost) - youssef241784 */}
                 {vm.mode === "found" && (
                     <View className="gap-3">
-                        <Text className="font-semibold text-ink">Where is the item now?</Text>
+                        <FieldLabel>Where is the item now?</FieldLabel>
                         <View className="flex-row gap-3 items-center justify-center">
                             <Pressable
                                 onPress={() => vm.setHeldAt("finder")}
@@ -180,19 +177,15 @@ export default function ReportItemScreen() {
                 <View className="border border-line bg-warning gap-3 rounded-3xl px-4 py-3">
                     <Text className="font-semibold text-ink">Security Question</Text>
                     <Text className="text-sm text-muted">Ask something only the owner would know, like a sticker, engraving or something that only the owner of this item may know. They must answer correctly before they can claim it.</Text>
-                    <TextInput
+                    <FormInput
                         value={vm.securityQuestion}
                         onChangeText={vm.setSecurityQuestion}
                         placeholder="e.g. What's attached to the keyring"
-                        placeholderTextColor={colors.muted}
-                        className="bg-white border border-line rounded-3xl h-14 px-4 text-ink"
                     />
-                    <TextInput
+                    <FormInput
                         value={vm.securityAnswer}
                         onChangeText={vm.setSecurityAnswer}
                         placeholder="Answer (only you can see this)"
-                        placeholderTextColor={colors.muted}
-                        className="bg-white border border-line rounded-3xl h-14 px-4 text-ink"
                     />
                 </View>
 

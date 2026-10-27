@@ -2,6 +2,8 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { palette as C } from "@/constants/palette";
 import ActionButton from "@/views/components/ActionButton";
+import Avatar from "@/views/components/Avatar";
+import BackButton from "@/views/components/BackButton";
 import { useItemDetailsViewModel } from "@/viewmodels/useItemDetailsViewModel";
 
 export default function ItemDetailsScreen() {
@@ -12,7 +14,7 @@ export default function ItemDetailsScreen() {
       <ScrollView style={styles.page} contentContainerStyle={styles.detailsContent} showsVerticalScrollIndicator={false}>
         <View style={styles.hero}>
           <View style={styles.heroTop}>
-            <Pressable style={styles.circleButton} onPress={vm.goBack}><Text style={styles.circleButtonText}>‹</Text></Pressable>
+            <BackButton onPress={vm.goBack} />
             <Pressable style={styles.circleButton} onPress={vm.share}><Text style={styles.shareIcon}>↥</Text></Pressable>
           </View>
           <View style={styles.keyArt}><Text style={styles.keyEmoji}>⚿</Text></View>
@@ -27,7 +29,7 @@ export default function ItemDetailsScreen() {
           </View>
           <Text style={styles.description}>Three keys on a ring with a blue rubber tag, left on a table after lunch. Nour is keeping them safe until the owner claims them.</Text>
           <View style={styles.posterCard}>
-            <View style={styles.avatar}><Text style={styles.avatarLetter}>N</Text></View>
+            <Avatar letter="N" />
             <View style={{ flex: 1 }}><Text style={styles.posterName}>Posted by Nour · Engineering</Text><Text style={styles.posterSub}>Verified BUE account</Text></View>
           </View>
           <View style={styles.spacerLarge} />
@@ -45,7 +47,6 @@ const styles = StyleSheet.create({
   hero: { backgroundColor: C.mint, borderBottomLeftRadius: 48, borderBottomRightRadius: 48, minHeight: 405, paddingHorizontal: 24, paddingTop: 18, paddingBottom: 20 },
   heroTop: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
   circleButton: { width: 56, height: 56, borderRadius: 20, backgroundColor: C.white, alignItems: "center", justifyContent: "center" },
-  circleButtonText: { color: C.text, fontSize: 39, lineHeight: 42, marginTop: -5 },
   shareIcon: { color: C.text, fontSize: 29, lineHeight: 34 },
   keyArt: { flex: 1, alignItems: "center", justifyContent: "center", minHeight: 270 },
   keyEmoji: { fontSize: 140, color: C.green, transform: [{ rotate: "-42deg" }] },
@@ -62,8 +63,6 @@ const styles = StyleSheet.create({
   infoValue: { color: C.text, fontWeight: "700", fontSize: 17, lineHeight: 23 },
   description: { color: C.muted, fontSize: 17, lineHeight: 27, marginTop: 26, marginBottom: 26 },
   posterCard: { backgroundColor: C.pale, borderRadius: 27, padding: 16, flexDirection: "row", alignItems: "center", gap: 14 },
-  avatar: { width: 54, height: 54, borderRadius: 30, backgroundColor: C.amber, alignItems: "center", justifyContent: "center" },
-  avatarLetter: { color: "#342712", fontSize: 23, fontWeight: "700" },
   posterName: { color: C.text, fontSize: 16, fontWeight: "700", marginBottom: 3 },
   posterSub: { color: C.muted, fontSize: 15 },
   spacerLarge: { height: 88 },

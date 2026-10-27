@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { goBackOrHome } from "@/viewmodels/tabNavigation";
 
 type EarlierNotification = {
   type: "check" | "security";
@@ -16,6 +16,6 @@ export function useNotificationsViewModel() {
   return {
     alerts: ALERTS,
     earlier: EARLIER,
-    goBack: () => (router.canGoBack() ? router.back() : router.replace("/Homescreen")),
+    goBack: goBackOrHome,
   };
 }

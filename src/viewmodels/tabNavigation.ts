@@ -13,3 +13,11 @@ export function goToTab(tab: string) {
     router.replace(TAB_ROUTES[tab as keyof typeof TAB_ROUTES]);
   }
 }
+
+export function goBackOrHome() {
+  if (router.canGoBack()) {
+    router.back();
+  } else {
+    goToTab("Home");
+  }
+}

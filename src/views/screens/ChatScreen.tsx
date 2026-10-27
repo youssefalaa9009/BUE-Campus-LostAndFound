@@ -2,6 +2,8 @@ import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text
 import { SafeAreaView } from "react-native-safe-area-context";
 import { palette as C } from "@/constants/palette";
 import ActionButton from "@/views/components/ActionButton";
+import Avatar from "@/views/components/Avatar";
+import BackButton from "@/views/components/BackButton";
 import { useChatViewModel } from "@/viewmodels/useChatViewModel";
 
 export default function ChatScreen() {
@@ -11,8 +13,8 @@ export default function ChatScreen() {
     <SafeAreaView style={styles.app}>
       <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === "ios" ? "padding" : undefined} keyboardVerticalOffset={12}>
         <View style={styles.chatHeader}>
-          <Pressable style={styles.chatBack} onPress={vm.goBack}><Text style={styles.backText}>‹</Text></Pressable>
-          <View style={styles.avatar}><Text style={styles.avatarLetter}>N</Text></View>
+          <BackButton onPress={vm.goBack} />
+          <Avatar letter="N" />
           <View style={styles.chatPerson}><Text style={styles.chatName}>Nour</Text><Text style={styles.chatPresence}>Found your keys · Online</Text></View>
           <ActionButton title="Pickup code" compact onPress={vm.openPickup} />
         </View>
@@ -51,11 +53,7 @@ export default function ChatScreen() {
 const styles = StyleSheet.create({
   app: { flex: 1, backgroundColor: C.background },
   flex: { flex: 1, backgroundColor: C.background },
-  backText: { fontSize: 40, color: C.text, lineHeight: 42 },
-  avatar: { width: 54, height: 54, borderRadius: 30, backgroundColor: C.amber, alignItems: "center", justifyContent: "center" },
-  avatarLetter: { color: "#342712", fontSize: 23, fontWeight: "700" },
   chatHeader: { flexDirection: "row", alignItems: "center", paddingHorizontal: 15, paddingTop: 10, paddingBottom: 13, gap: 10 },
-  chatBack: { width: 30, alignItems: "center", justifyContent: "center" },
   chatPerson: { flex: 1 },
   chatName: { fontSize: 20, fontWeight: "800", color: C.text },
   chatPresence: { color: C.muted, fontSize: 14, lineHeight: 19 },

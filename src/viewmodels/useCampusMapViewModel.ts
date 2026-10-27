@@ -3,7 +3,7 @@ import { router } from "expo-router";
 import { MAP_BUILDINGS } from "@/constants/mapData";
 import { CATEGORIES } from "@/constants/categories";
 import { getFoundItems } from "@/services/itemsService";
-import { goToTab } from "@/viewmodels/tabNavigation";
+import { goBackOrHome, goToTab } from "@/viewmodels/tabNavigation";
 
 function timeAgo(date: Date) {
     const minutes = Math.round((Date.now() - date.getTime()) / 60000);
@@ -50,7 +50,7 @@ export function useCampusMapViewModel() {
         selectPin: setSelectedId,
         viewDetails: () => selectedItem && router.push({ pathname: "/itemDetails", params: { title: selectedItem.name } }),
         claim: () => router.push("/chat"),
-        goBack: () => (router.canGoBack() ? router.back() : goToTab("Home")),
+        goBack: goBackOrHome,
         goToTab,
     };
 }

@@ -7,9 +7,10 @@ import {
     View,
 } from "react-native";
 import QRCode from "react-native-qrcode-svg";
-import { ArrowLeft, Clock } from "lucide-react-native";
+import { Clock } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { usePickupViewModel } from "@/viewmodels/usePickupViewModel";
+import BackButton from "@/views/components/BackButton";
 
 export default function PickupScreen() {
   const vm = usePickupViewModel();
@@ -22,9 +23,7 @@ export default function PickupScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton} onPress={vm.goBack}>
-            <ArrowLeft size={17} color="#263b31"/>
-          </TouchableOpacity>
+          <BackButton onPress={vm.goBack} />
           <Text style={styles.headerTitle}>Pickup</Text>
         </View>
         <View style={styles.roleContainer}>
@@ -124,22 +123,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 18,
     gap: 10,
-  },
-  backButton: {
-    width: 35,
-    height: 35,
-    borderRadius: 12,
-    backgroundColor: "#FFFFFF",
-    borderWidth: 1,
-    borderColor: "#E2E8E0",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  backButtonText: {
-    fontSize: 30,
-    lineHeight: 32,
-    marginTop: -3,
-    color: "#26352E",
   },
   headerTitle: {
     fontSize: 16,

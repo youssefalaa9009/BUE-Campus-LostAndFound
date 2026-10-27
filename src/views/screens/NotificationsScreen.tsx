@@ -1,8 +1,8 @@
 import { Pressable, ScrollView, StatusBar, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNotificationsViewModel } from "@/viewmodels/useNotificationsViewModel";
+import BackButton from "@/views/components/BackButton";
 import {
-    ArrowLeft,
     Check,
     Headphones,
     Link2,
@@ -64,14 +64,7 @@ export default function NotificationsScreen() {
         showsVerticalScrollIndicator={true}
       >
         <View className="mb-2 mt-1 flex-row items-center gap-2">
-          <Pressable
-            onPress={vm.goBack}
-            accessibilityRole="button"
-            accessibilityLabel="Go back"
-            className="h-7 w-7 items-center justify-center rounded-full border border-[#dce5dc] bg-white"
-          >
-            <ArrowLeft size={17} color="#263b31" />
-          </Pressable>
+          <BackButton onPress={vm.goBack} />
           <Text className="flex-1 text-[14px] font-bold text-[#15271f]">
             Notifications
           </Text>
