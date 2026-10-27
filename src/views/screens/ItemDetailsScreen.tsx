@@ -5,6 +5,7 @@ import ActionButton from "@/views/components/ActionButton";
 import Avatar from "@/views/components/Avatar";
 import BackButton from "@/views/components/BackButton";
 import { useItemDetailsViewModel } from "@/viewmodels/useItemDetailsViewModel";
+import colors from "@/constants/colors";
 
 export default function ItemDetailsScreen() {
   const vm = useItemDetailsViewModel();
@@ -66,5 +67,5 @@ const styles = StyleSheet.create({
   posterName: { color: C.text, fontSize: 16, fontWeight: "700", marginBottom: 3 },
   posterSub: { color: C.muted, fontSize: 15 },
   spacerLarge: { height: 88 },
-  bottomAction: { padding: 18, borderTopWidth: 1, borderTopColor: "#E5EBE3", backgroundColor: C.background },
+  bottomAction: { padding: 18, borderTopWidth: 1, borderTopColor: colors.line, backgroundColor: C.background },
 });

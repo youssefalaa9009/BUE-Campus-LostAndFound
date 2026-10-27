@@ -5,6 +5,7 @@ import ActionButton from "@/views/components/ActionButton";
 import Avatar from "@/views/components/Avatar";
 import BackButton from "@/views/components/BackButton";
 import { useChatViewModel } from "@/viewmodels/useChatViewModel";
+import colors from "@/constants/colors";
 
 export default function ChatScreen() {
   const vm = useChatViewModel();
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   stripTitle: { color: C.text, fontSize: 15, fontWeight: "700", flex: 1 },
   verifiedPill: { backgroundColor: C.mint, borderRadius: 13, paddingHorizontal: 10, paddingVertical: 8 },
   verifiedText: { color: C.green, fontSize: 13, fontWeight: "700" },
-  chatScroll: { flex: 1, borderTopWidth: 1, borderTopColor: "#E6ECE4" },
+  chatScroll: { flex: 1, borderTopWidth: 1, borderTopColor: colors.line },
   chatMessages: { paddingHorizontal: 16, paddingTop: 15, paddingBottom: 12 },
   systemMessage: { backgroundColor: C.pale, borderRadius: 20, padding: 12, marginBottom: 15 },
   systemText: { color: C.muted, fontSize: 14, textAlign: "center", lineHeight: 21 },
@@ -76,15 +77,15 @@ const styles = StyleSheet.create({
   messageTime: { color: C.muted, fontSize: 12, marginTop: 5 },
   timeMine: { textAlign: "right" },
   locationCard: { width: "78%", overflow: "hidden", borderRadius: 25, backgroundColor: C.white, borderWidth: 1, borderColor: C.border, marginTop: 4, marginBottom: 5 },
-  mapPreview: { height: 112, backgroundColor: "#E7EDE3", alignItems: "center", justifyContent: "center", overflow: "hidden" },
-  mapRoadHorizontal: { position: "absolute", height: 13, left: 0, right: 0, top: "47%", backgroundColor: "#D9E1D6" },
-  mapRoadVertical: { position: "absolute", width: 12, top: 0, bottom: 0, left: "55%", backgroundColor: "#D9E1D6" },
+  mapPreview: { height: 112, backgroundColor: colors.surface2, alignItems: "center", justifyContent: "center", overflow: "hidden" },
+  mapRoadHorizontal: { position: "absolute", height: 13, left: 0, right: 0, top: "47%", backgroundColor: colors.line },
+  mapRoadVertical: { position: "absolute", width: 12, top: 0, bottom: 0, left: "55%", backgroundColor: colors.line },
   mapPin: { fontSize: 33, color: C.green, textShadowColor: C.white, textShadowRadius: 4 },
   locationInfo: { paddingHorizontal: 15, paddingVertical: 12 },
   locationTitle: { color: C.text, fontWeight: "700", fontSize: 16, marginBottom: 4 },
   locationTime: { color: C.muted, fontSize: 15, marginBottom: 8 },
   mapLink: { color: C.green, fontWeight: "700", fontSize: 14, textDecorationLine: "underline" },
-  quickReplies: { flexDirection: "row", gap: 8, paddingHorizontal: 14, paddingVertical: 10, borderTopWidth: 1, borderTopColor: "#E3EAE1" },
+  quickReplies: { flexDirection: "row", gap: 8, paddingHorizontal: 14, paddingVertical: 10, borderTopWidth: 1, borderTopColor: colors.line },
   quickChip: { borderRadius: 24, backgroundColor: C.background, borderWidth: 1.5, borderColor: C.border, paddingHorizontal: 14, paddingVertical: 12 },
   quickText: { color: C.text, fontSize: 14 },
   composer: { flexDirection: "row", alignItems: "center", gap: 9, paddingHorizontal: 14, paddingVertical: 10 },

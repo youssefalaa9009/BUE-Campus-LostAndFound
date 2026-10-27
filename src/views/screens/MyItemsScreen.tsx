@@ -6,6 +6,7 @@ import IconTile from "@/views/components/IconTile";
 import ItemProgress from "@/views/components/ItemProgress";
 import NavBar from "@/views/components/NavBar";
 import { useMyItemsViewModel } from "@/viewmodels/useMyItemsViewModel";
+import colors from "@/constants/colors";
 
 export default function MyItemsScreen() {
   const vm = useMyItemsViewModel();
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   itemTitle: { color: C.text, fontSize: 17, fontWeight: "800", marginBottom: 5 },
   itemSubtitle: { color: C.muted, fontSize: 14, lineHeight: 20 },
   lostBadge: { backgroundColor: C.amber, paddingHorizontal: 12, paddingVertical: 8, borderRadius: 14, alignSelf: "flex-start" },
-  lostBadgeText: { color: "#3C2C16", fontSize: 14, fontWeight: "800" },
+  lostBadgeText: { color: colors.onAccent, fontSize: 14, fontWeight: "800" },
   itemCallout: { backgroundColor: C.pale, borderRadius: 24, padding: 13, flexDirection: "row", alignItems: "center", gap: 10 },
   itemNote: { color: C.text, fontSize: 14, lineHeight: 21, flex: 1 },
 });

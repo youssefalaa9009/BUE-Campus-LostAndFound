@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { House, Map as MapIcon, Package, Plus, User } from "lucide-react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import colors from "@/constants/colors";
 
 
 type NavBarProps = {
@@ -29,7 +30,7 @@ export default function NavBar({
         >
           <tab.icon
             size={21}
-            color={activeTab === tab.name ? "#197052" : "#68786D"}
+            color={activeTab === tab.name ? colors.primary : colors.muted}
           />
           <Text
             style={
@@ -59,7 +60,7 @@ export default function NavBar({
         >
           <tab.icon
             size={21}
-            color={activeTab === tab.name ? "#197052" : "#68786D"}
+            color={activeTab === tab.name ? colors.primary : colors.muted}
           />
           <Text
             style={
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     backgroundColor: "#FFFFFF",
     borderTopWidth: 1,
-    borderTopColor: "#E5EAE3",
+    borderTopColor: colors.line,
     paddingTop: 8,
     paddingBottom: 10,
     paddingHorizontal: 4,
@@ -94,16 +95,16 @@ const styles = StyleSheet.create({
   },
   navIcon: {
     fontSize: 21,
-    color: "#68786D",
+    color: colors.muted,
   },
   activeNavText: {
     fontSize: 9,
     fontWeight: "700",
-    color: "#197052",
+    color: colors.primary,
   },
   navText: {
     fontSize: 9,
-    color: "#68786D",
+    color: colors.muted,
   },
   reportButton: {
     flex: 1,
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: "#197052",
+    backgroundColor: colors.primary,
     color: "#ffffff",
     fontSize: 24,
     lineHeight: 29,

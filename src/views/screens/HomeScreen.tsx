@@ -11,6 +11,7 @@ import { Bell, Headphones, IdCard, Search, Filter } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import NavBar from "@/views/components/NavBar";
 import { useHomeViewModel } from "@/viewmodels/useHomeViewModel";
+import colors from "@/constants/colors";
 
 export default function HomeScreen() {
   const vm = useHomeViewModel();
@@ -33,23 +34,23 @@ export default function HomeScreen() {
             style={styles.notificationButton}
             onPress={vm.openNotifications}
           >
-           <Bell size={22} color="#173D30"/>
+           <Bell size={22} color={colors.ink}/>
             <View style={styles.notificationDot} />
           </TouchableOpacity>
         </View>
         <View style={styles.searchContainer}>
-          <Search size={17} color="#176B50"/>
+          <Search size={17} color={colors.primary}/>
           <TextInput
             style={styles.searchInput}
             placeholder="Search items, e.g keys"
-            placeholderTextColor="#7A817D"
+            placeholderTextColor={colors.muted}
             returnKeyType="search"
           />
           <TouchableOpacity
             style={styles.filterButton}
             onPress={() => console.log("Open filters")}
           >
-            <Filter size={17} color="#176B50" />
+            <Filter size={17} color={colors.primary} />
           </TouchableOpacity>
         </View>
         <TouchableOpacity
@@ -57,7 +58,7 @@ export default function HomeScreen() {
           onPress={vm.openMatches}
         >
           <View style={styles.matchIconBox}>
-            <Headphones size={25} color="#176B50"/>
+            <Headphones size={25} color={colors.primary}/>
           </View>
           <View style={styles.matchTextContainer}>
             <Text style={styles.matchTitle}>We found 2 possible matches.</Text>
@@ -100,7 +101,7 @@ export default function HomeScreen() {
         <View style={styles.itemsGrid}>
           <TouchableOpacity style={styles.itemsCard}>
             <View style={styles.itemImage}>
-              <IdCard size={36} color="#176B50"/>
+              <IdCard size={36} color={colors.primary}/>
             </View>
             <Text style={styles.itemName}>Student ID Card</Text>
             <Text style={styles.itemLocation}>Library, 2nd floor</Text>
@@ -108,7 +109,7 @@ export default function HomeScreen() {
           </TouchableOpacity>
           <TouchableOpacity style={styles.itemsCard}>
             <View style={styles.itemImage}>
-              <Headphones size={36} color="#176B50"/>
+              <Headphones size={36} color={colors.primary}/>
             </View>
             <Text style={styles.itemName}>Headphones</Text>
             <Text style={styles.itemLocation}>Engineering, 1st floor</Text>
@@ -127,7 +128,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F3F6F0",
+    backgroundColor: colors.surface,
   },
   scrollContent: {
     paddingHorizontal: 20,
@@ -146,13 +147,13 @@ const styles = StyleSheet.create({
   greeting: {
     fontSize: 12,
     fontWeight: "500",
-    color: "#111B16",
+    color: colors.ink,
     lineHeight: 31,
   },
   heading: {
     fontSize: 28,
     fontWeight: "900",
-    color: "#111B16",
+    color: colors.ink,
     lineHeight: 31,
   },
   notificationButton: {
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
-    borderColor: "#E0E8DF",
+    borderColor: colors.line,
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
@@ -173,14 +174,14 @@ const styles = StyleSheet.create({
     width: 9,
     height: 9,
     borderRadius: 5,
-    backgroundColor: "#F5A33B",
+    backgroundColor: colors.accent,
   },
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
-    borderColor: "#DDE5DC",
+    borderColor: colors.line,
     borderRadius: 16,
     height: 50,
     paddingLeft: 14,
@@ -190,21 +191,21 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 14,
-    color: "#1B2922",
+    color: colors.ink,
     paddingVertical: 8,
   },
   filterButton: {
     width: 40,
     height: 40,
     borderRadius: 12,
-    backgroundColor: "#D6EDE2",
+    backgroundColor: colors.mint,
     justifyContent: "center",
     alignItems: "center",
   },
   matchCard: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#176B50",
+    backgroundColor: colors.primary,
     borderRadius: 24,
     padding: 15,
     minHeight: 105,
@@ -221,7 +222,7 @@ const styles = StyleSheet.create({
   },
   matchIcon: {
     fontSize: 25,
-    color: "#176B50",
+    color: colors.primary,
   },
   matchTextContainer: {
     flex: 1,
@@ -235,7 +236,7 @@ const styles = StyleSheet.create({
   },
   matchDescription: {
     fontSize: 13,
-    color: "#E7F2EC",
+    color: colors.mint,
     marginTop: 5,
     lineHeight: 17,
   },
@@ -246,7 +247,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   viewButtonText: {
-    color: "#176B50",
+    color: colors.primary,
     fontWeight: "700",
     fontSize: 13,
   },
@@ -260,7 +261,7 @@ const styles = StyleSheet.create({
     paddingRight: 5,
   },
   activeCategory: {
-    backgroundColor: "#14251D",
+    backgroundColor: colors.ink,
     borderRadius: 25,
     paddingHorizontal: 17,
     paddingVertical: 11,
@@ -274,12 +275,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius: 25,
     borderWidth: 1,
-    borderColor: "#DDE5DC",
+    borderColor: colors.line,
     paddingHorizontal: 16,
     paddingVertical: 11,
   },
   categoryText: {
-    color: "#1D2C24",
+    color: colors.ink,
     fontSize: 13,
   },
   sectionHeader: {
@@ -291,11 +292,11 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 19,
     fontWeight: "800",
-    color: "#14251D",
+    color: colors.ink,
   },
   mapLink: {
     fontSize: 12,
-    color: "#176B50",
+    color: colors.primary,
     textDecorationLine: "underline",
     fontWeight: "600",
   },
@@ -310,13 +311,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius: 22,
     borderWidth: 1,
-    borderColor: "#DDE5DC",
+    borderColor: colors.line,
     padding: 7,
     paddingBottom: 12,
   },
   itemImage: {
     height: 98,
-    backgroundColor: "#D5EDE2",
+    backgroundColor: colors.mint,
     borderRadius: 16,
     justifyContent: "center",
     alignItems: "center",
@@ -324,24 +325,24 @@ const styles = StyleSheet.create({
   },
   itemIcon: {
     fontSize: 36,
-    color: "#176B50",
+    color: colors.primary,
   },
   itemName: {
     fontSize: 13,
     fontWeight: "800",
-    color: "#18251E",
+    color: colors.ink,
     marginHorizontal: 4,
     marginBottom: 4,
   },
   itemLocation: {
     fontSize: 11,
-    color: "#626F66",
+    color: colors.muted,
     marginHorizontal: 4,
     marginBottom: 4,
   },
   itemTime: {
     fontSize: 11,
-    color: "#626F66",
+    color: colors.muted,
     marginHorizontal: 4,
   },
 });

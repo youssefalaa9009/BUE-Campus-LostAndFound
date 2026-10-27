@@ -1,11 +1,15 @@
 module.exports = {
-  primary: "#3B6B52", // for border, icons, main buttons
-  mint: "#DCEEE4",    // selected tile, photo thumbnail
-  surface: "#F3F4F0", // screen background
-  line: "#E3E5E0",    // borders
-  ink: "#1A1F1C",     // titles
-  muted: "#6B716D",   // placeholder & secondary text
-  warning: "#F7E9D2",
-  mapBg: "#E8EEE5",   // campus map background
-   // warning
+  primary: "#17694D",    // for border, icons, main buttons
+  mint: "#D6ECE1",       // selected tile, photo thumbnail
+  surface: "#F2F6F1",    // screen background
+  surface2: "#E6EEE4",   // toggles, soft backgrounds
+  line: "#D8E2D6",       // borders
+  ink: "#13201A",        // titles
+  muted: "#52625A",      // placeholder & secondary text
+  accent: "#F0A13A",     // orange highlights
+  accentSoft: "#FCE9CF", // soft orange backgrounds
+  accentInk: "#8F520A",  // text on soft orange
+  onAccent: "#2A1A05",   // text on orange
+  warning: "#FCE9CF",    // security question card
+  mapBg: "#E6EEE4",      // campus map background
 };

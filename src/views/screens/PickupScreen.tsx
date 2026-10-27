@@ -11,6 +11,7 @@ import { Clock } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { usePickupViewModel } from "@/viewmodels/usePickupViewModel";
 import BackButton from "@/views/components/BackButton";
+import colors from "@/constants/colors";
 
 export default function PickupScreen() {
   const vm = usePickupViewModel();
@@ -79,7 +80,7 @@ export default function PickupScreen() {
         <Text style={styles.scanHelp}>Can't scan? Share this code</Text>
         <Text style={styles.pickupCode}>{vm.pickupCode}</Text>
         <View style={styles.expiryNotice}>
-          <Clock size={17} color="#176B50" />
+          <Clock size={17} color={colors.primary} />
           <Text style={styles.expiryText}>Valid for 14:52 - works once</Text>
         </View>
         <View style={styles.stepsCard}>
@@ -111,7 +112,7 @@ export default function PickupScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F3F6F0",
+    backgroundColor: colors.surface,
   },
   scrollContent: {
     paddingHorizontal: 20,
@@ -127,11 +128,11 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 16,
     fontWeight: "700",
-    color: "#111C16",
+    color: colors.ink,
   },
   roleContainer: {
     borderWidth: 1,
-    borderColor: "#8ca797",
+    borderColor: colors.muted,
     borderStyle: "dashed",
     borderRadius: 14,
     padding: 7,
@@ -140,13 +141,13 @@ const styles = StyleSheet.create({
   },
   prototypeText: {
     fontSize: 9,
-    color: "#315a48",
+    color: colors.ink,
     textAlign: "center",
     marginBottom: 6,
   },
   roleSwitch: {
     flexDirection: "row",
-    backgroundColor: "#e5ece2",
+    backgroundColor: colors.surface2,
     borderRadius: 10,
     padding: 3,
   },
@@ -167,16 +168,16 @@ const styles = StyleSheet.create({
   },
   roleText: {
     fontSize: 11,
-    color: "#315A48",
+    color: colors.ink,
   },
   selectedRoleText: {
     fontWeight: "600",
-    color: "#15231b",
+    color: colors.ink,
   },
   description: {
     fontSize: 11,
     lineHeight: 17,
-    color: "#586d62",
+    color: colors.muted,
     textAlign: "center",
     marginHorizontal: 2,
     marginBottom: 12,
@@ -190,7 +191,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     elevation: 5,
-    shadowColor: "#536557",
+    shadowColor: colors.muted,
     shadowOpacity: 0.12,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 7 },
@@ -198,7 +199,7 @@ const styles = StyleSheet.create({
   },
   scanHelp: {
     fontSize: 9,
-    color: "#64736A",
+    color: colors.muted,
     textAlign: "center",
     marginBottom: 3,
   },
@@ -206,14 +207,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "800",
     letterSpacing: 3,
-    color: "#197052",
+    color: colors.primary,
     textAlign: "center",
     marginBottom: 12,
   },
   expiryNotice: {
     height: 34,
     borderRadius: 13,
-    backgroundColor: "#FCEBCF",
+    backgroundColor: colors.accentSoft,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 11,
@@ -222,13 +223,13 @@ const styles = StyleSheet.create({
   expiryText: {
     fontSize: 10,
     fontWeight: "600",
-    color: "#99510a",
+    color: colors.accentInk,
   },
   stepsCard: {
     backgroundColor: "#FFFFFF",
     borderRadius: 17,
     borderWidth: 1,
-    borderColor: "#e0e9df",
+    borderColor: colors.line,
     paddingHorizontal: 10,
     paddingVertical: 10,
     gap: 9,
@@ -243,18 +244,18 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderRadius: 10,
-    backgroundColor: "#d6ebe1",
+    backgroundColor: colors.mint,
     alignItems: "center",
     justifyContent: "center",
   },
   stepNumberText: {
     fontSize: 10,
     fontWeight: "600",
-    color: "#287258",
+    color: colors.primary,
   },
   stepText: {
     flex: 1,
     fontSize: 10,
-    color: "#1c3026",
+    color: colors.ink,
   },
 });

@@ -1,13 +1,14 @@
+import colors from "@/constants/colors";
+
 export const palette = {
-  green: "#376951",
-  greenDark: "#2E5D47",
-  mint: "#DCEBE2",
-  pale: "#E8EEE4",
-  background: "#F3F6F0",
+  green: colors.primary,
+  mint: colors.mint,
+  pale: colors.surface2,
+  background: colors.surface,
   white: "#FFFFFF",
-  text: "#18221D",
-  muted: "#6E7972",
-  border: "#DDE6DC",
-  amber: "#E7A64B",
-  amberPale: "#F8EBD5",
+  text: colors.ink,
+  muted: colors.muted,
+  border: colors.line,
+  amber: colors.accent,
+  amberPale: colors.accentSoft,
 };
