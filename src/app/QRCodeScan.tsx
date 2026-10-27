@@ -10,6 +10,7 @@ import {
 import QRCode from "react-native-qrcode-svg";
 import { ArrowLeft, Clock } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { router } from "expo-router";
 
 export default function QRCodeScan() {
   const [selectedRole, setSelectedRole] = useState<"Owner" | "Finder">("Owner");
@@ -21,7 +22,7 @@ export default function QRCodeScan() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton}>
+          <TouchableOpacity style={styles.backButton} onPress={() => (router.canGoBack() ? router.back() : router.replace("/Homescreen"))}>
             <ArrowLeft size={17} color="#263b31"/>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Pickup</Text>

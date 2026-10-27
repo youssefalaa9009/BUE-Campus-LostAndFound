@@ -48,6 +48,8 @@ export function useCampusMapViewModel() {
         foundCount: foundItems.length,
         selectedCard,
         selectPin: setSelectedId,
+        viewDetails: () => selectedItem && router.push({ pathname: "/itemDetails", params: { title: selectedItem.name } }),
+        claim: () => router.push("/chat"),
         goBack: () => (router.canGoBack() ? router.back() : goToTab("Home")),
         goToTab,
     };

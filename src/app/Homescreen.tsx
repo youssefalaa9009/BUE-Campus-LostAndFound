@@ -53,7 +53,7 @@ export default function Homescreen() {
         </View>
         <TouchableOpacity
           style={styles.matchCard}
-          onPress={() => console.log("View possible matches")}
+          onPress={() => goToTab("My Items")}
         >
           <View style={styles.matchIconBox}>
             <Headphones size={25} color="#176B50"/>
@@ -92,7 +92,7 @@ export default function Homescreen() {
         </ScrollView>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Recently found</Text>
-          <TouchableOpacity onPress={() => console.log("Open map")}>
+          <TouchableOpacity onPress={() => goToTab("Map")}>
             <Text style={styles.mapLink}>See on map</Text>
           </TouchableOpacity>
         </View>

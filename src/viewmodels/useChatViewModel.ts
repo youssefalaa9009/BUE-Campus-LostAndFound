@@ -56,6 +56,7 @@ export function useChatViewModel() {
     sendMessage,
     pickupCodeVisible,
     openPickupCode: () => setPickupCodeVisible(true),
+    openPickup: () => router.push("/QRCodeScan"),
     closePickupCode: () => setPickupCodeVisible(false),
     confirmReturned,
     showPickupLocation,

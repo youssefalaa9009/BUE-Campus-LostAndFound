@@ -14,7 +14,7 @@ export default function ChatScreen() {
           <Pressable style={styles.chatBack} onPress={vm.goBack}><Text style={styles.backText}>‹</Text></Pressable>
           <View style={styles.avatar}><Text style={styles.avatarLetter}>N</Text></View>
           <View style={styles.chatPerson}><Text style={styles.chatName}>Nour</Text><Text style={styles.chatPresence}>Found your keys · Online</Text></View>
-          <ActionButton title="Pickup code" compact onPress={vm.openPickupCode} />
+          <ActionButton title="Pickup code" compact onPress={vm.openPickup} />
         </View>
         <View style={styles.chatItemStrip}>
           <Text style={styles.stripKey}>⚿</Text><Text style={styles.stripTitle}>{vm.itemTitle}</Text><View style={styles.verifiedPill}><Text style={styles.verifiedText}>Owner verified</Text></View>

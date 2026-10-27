@@ -69,10 +69,10 @@ export default function CampusMapScreen() {
                         </View>
 
                         <View className="flex-row gap-3">
-                            <Pressable onPress={() => {}} className="flex-1 h-12 rounded-2xl border border-line items-center justify-center">
+                            <Pressable onPress={vm.viewDetails} className="flex-1 h-12 rounded-2xl border border-line items-center justify-center">
                                 <Text className="font-semibold text-ink">View details</Text>
                             </Pressable>
-                            <Pressable onPress={() => {}} className="flex-1 h-12 rounded-2xl bg-primary items-center justify-center">
+                            <Pressable onPress={vm.claim} className="flex-1 h-12 rounded-2xl bg-primary items-center justify-center">
                                 <Text className="font-semibold text-white">Claim this item</Text>
                             </Pressable>
                         </View>
