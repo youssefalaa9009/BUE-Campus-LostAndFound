@@ -1,56 +1,68 @@
-# Welcome to your Expo app 👋
+# BUE Campus Lost & Found
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile app for reporting lost and found items on the BUE campus. Students can report an item, see found items on a campus map, claim an item, chat with the finder and confirm the handover with a pickup code.
 
-## Get started
+Mobile Development (25CSCI38H), Coursework 01, Phase 1: UI prototype.
 
-1. Install dependencies
+## Team and screens
 
-   ```bash
-   npm install
-   ```
+| Member | Screens |
+|---|---|
+| Youssef Alaa (241784) | Report an item, Camera, Campus map |
+| Mohamed Khalil (249415) | Home, Notifications, Pickup (QR code) |
+| Marwan Galal (239310) | My items, Item details, Chat |
 
-2. Start the app
+## Tech stack
 
-   ```bash
-   npx expo start
-   ```
+- Expo SDK 58, React Native 0.88, TypeScript
+- Expo Router (file-based navigation)
+- NativeWind (Tailwind CSS for React Native)
+- lucide-react-native icons
+- expo-camera, expo-image-picker, @react-native-community/datetimepicker, react-native-qrcode-svg
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Running the app
 
 ```bash
-npm run reset-project
+npm install
+npx expo start -c
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Scan the QR code with Expo Go on your phone. If the phone can't connect to the dev server (for example on a public Wi-Fi network), use:
 
-### Other setup steps
+```bash
+npx expo start --tunnel -c
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Architecture: MVVM
 
-## Learn more
+```
+src/
+  app/            routes (Expo Router). Each file only renders its screen
+  views/
+    screens/      View: the UI of each screen
+    components/   View: shared UI (NavBar, BackButton, FormInput, ActionButton, ...)
+  viewmodels/     ViewModel: one hook per screen with its state and logic
+  models/         Model: data types (Item, MyItem)
+  services/       Model: data access (sample data for now)
+  constants/      fixed data (colours, categories, campus locations, map layout)
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+- A screen calls its ViewModel hook and only draws what it returns.
+- ViewModels hold state and logic and call services. They contain no UI.
+- Services and models know nothing about screens, so the sample data can be replaced with a real database later without changing the screens.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Navigation
 
-## Join the community
+- Home, Campus map and My items are switched from the bottom NavBar.
+- The NavBar's Report (+) button opens Report an item as a modal; Add photo opens the Camera.
+- Item details, Chat, Notifications and Pickup open on top of the current screen.
 
-Join our community of developers creating universal apps.
+## Branches
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- `youssef241784`, `mohamed249415`, `Marwan239310`: each member's own work
+- `integration`: all three merged and connected
+- `main`: final version
+
+## Phase 1 limitations
+
+This is a UI prototype with sample data. There is no backend yet, so reports are not saved, search does not filter, and the camera shutter and gallery buttons are not connected.
