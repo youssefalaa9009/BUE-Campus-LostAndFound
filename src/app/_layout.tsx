@@ -6,5 +6,6 @@ export default function RootLayout() {
 
 <Stack.Screen name="reportItem" options={{ presentation: "modal", headerShown: false }} />
 <Stack.Screen name="campusMap" options={{ headerShown: false }} />
+<Stack.Screen name="chat" options={{ headerShown: false }} />
   </Stack>;
 }

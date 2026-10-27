@@ -24,6 +24,10 @@ export default function Index() {
       <Link href="/QRCodeScan">
         <Text className="text-white mt-4">Open QR Code</Text>
       </Link>
+
+      <Link href="/chat">
+        <Text className="text-white mt-4">Open Chat</Text>
+      </Link>
     </SafeAreaView>
   );
 }
