@@ -3,17 +3,28 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import { ChevronLeft } from "lucide-react-native";
 import colors from "@/constants/colors";
-import { MAP_BUILDINGS, FOUND_ITEMS } from "@/constants/mapData";
+import { MAP_BUILDINGS } from "@/constants/mapData";
 import { CATEGORIES } from "@/constants/categories";
+import { getFoundItems } from "@/services/itemsService";
 import { useState } from "react";
 
+// "40 min ago", "2 h ago", "Yesterday", "3 days ago"
+function timeAgo(date: Date) {
+    const minutes = Math.round((Date.now() - date.getTime()) / 60000);
+    if (minutes < 60) return `${minutes} min ago`;
+    const hours = Math.round(minutes / 60);
+    if (hours < 24) return `${hours} h ago`;
+    const days = Math.floor(hours / 24);
+    return days === 1 ? "Yesterday" : `${days} days ago`;
+}
 
 export default function CampusMap(){
-    const foundCount = FOUND_ITEMS.length;
+    const foundItems = getFoundItems();
+    const foundCount = foundItems.length;
     const [selectedId, setSelectedId] = useState("");
 
-    const selectedItem = FOUND_ITEMS.find((i) => i.id === selectedId);
-    const selectedBuilding = MAP_BUILDINGS.find((b) => b.id === selectedItem?.buildingId);
+    const selectedItem = foundItems.find((i) => i.id === selectedId);
+    const selectedBuilding = MAP_BUILDINGS.find((b) => b.id === selectedItem?.locationId);
     const selectedCategory = CATEGORIES.find((c) => c.id === selectedItem?.category);
     
     return (
@@ -39,8 +50,8 @@ export default function CampusMap(){
     ))}
 
             {/* pins: one per found item, centred on its building */}
-            {FOUND_ITEMS.map((item) => {
-                const building = MAP_BUILDINGS.find((b) => b.id === item.buildingId);
+            {foundItems.map((item) => {
+                const building = MAP_BUILDINGS.find((b) => b.id === item.locationId);
                 const category = CATEGORIES.find((c) => c.id === item.category);
                 if (!building || !category) return null;
 
@@ -103,7 +114,7 @@ export default function CampusMap(){
                     </View>
                     <View className="flex-1 gap-1">
                         <Text className="text-base font-semibold text-ink">{selectedItem.name}</Text>
-                        <Text className="text-sm text-muted">{selectedBuilding.label} - {selectedItem.time}</Text>
+                        <Text className="text-sm text-muted">{selectedBuilding.label} - {timeAgo(selectedItem.happenedAt)}</Text>
                     </View>
                 </View>
 
