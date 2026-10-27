@@ -6,7 +6,7 @@ import {X, Camera, MapPin} from "lucide-react-native";
 import { CAMPUS_LOCATIONS } from "@/constants/locations";
 import { CATEGORIES } from "@/constants/categories";
 import { Image } from "expo-image";
-import CameraModal from "@/components/reportItem/CameraModal";
+import CameraModal from "@/views/components/CameraModal";
 
 import DateTimePicker, {DateTimePickerAndroid} from "@react-native-community/datetimepicker"; // date picker package
 

@@ -1,30 +1,29 @@
 import { Modal, View, Pressable, Text } from "react-native";
 import { X, KeyRound, ImageIcon, Zap } from "lucide-react-native";
-import { CameraView, useCameraPermissions } from "expo-camera";
+import { CameraView } from "expo-camera";
+import { useCameraViewModel } from "@/viewmodels/useCameraViewModel";
 
-// What the Report screen passes in
 type Props = {
-    visible: boolean;                    // open or closed
-    photoCount: number;                  // how many photos already taken
+    visible: boolean;
+    photoCount: number;
     maxPhotos: number;
-    onCapture: (uri: string) => void;    // call with each new photo
-    onClose: () => void;                 // call to close the camera
+    onCapture: (uri: string) => void;
+    onClose: () => void;
 };
 
 export default function CameraModal({ visible, photoCount, maxPhotos, onCapture, onClose }: Props) {
-    const [permission, requestPermission] = useCameraPermissions();
-    
-    
+    const vm = useCameraViewModel({ photoCount, maxPhotos });
+
     return (
         <Modal visible={visible} animationType="slide">
             <View className="flex-1 bg-black">
                 <View className="flex-1">
-                    {permission?.granted ? (
+                    {vm.hasPermission ? (
                         <CameraView style={{ flex: 1 }} facing="back"/>
                     ) : ( 
                         <View className="flex-1 items-center justify-center gap-4 px-8">
                             <Text className="text-white text-center">We need your camera to photograph the item</Text>
-                            <Pressable className="bg-primary rounded-3xl px-6 h-12 justify-center" onPress={requestPermission}> 
+                            <Pressable className="bg-primary rounded-3xl px-6 h-12 justify-center" onPress={vm.requestPermission}> 
                                 <Text className="text-white font-semibold">Allow Camera</Text>
                             </Pressable>
                         </View>
@@ -42,7 +41,7 @@ export default function CameraModal({ visible, photoCount, maxPhotos, onCapture,
                             </Pressable>
 
                             <View className="bg-black/70 rounded-full px-4 py-2">
-                                <Text className="text-white font-semibold">Photo {photoCount + 1} of {maxPhotos}</Text>
+                                <Text className="text-white font-semibold">{vm.photoLabel}</Text>
                             </View>
 
                             <Pressable onPress={() => {}} className="size-12 rounded-2xl bg-black/70 items-center justify-center">
