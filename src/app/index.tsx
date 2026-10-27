@@ -32,6 +32,10 @@ export default function Index() {
       <Link href="/itemDetails">
         <Text className="text-white mt-4">Open Item Details</Text>
       </Link>
+
+      <Link href="/myItems">
+        <Text className="text-white mt-4">Open My Items</Text>
+      </Link>
     </SafeAreaView>
   );
 }
