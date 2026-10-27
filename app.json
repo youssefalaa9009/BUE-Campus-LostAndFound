@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "BUE-Lost-And-Found",
-    "slug": "BUE-Lost-And-Found",
+    "slug": "bue-lostandfound",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -41,6 +41,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "dfa31ab2-27f9-4820-9bf8-b6fd38f36463"
+      }
+    },
+    "owner": "mokhalil5s-team"
   }
 }

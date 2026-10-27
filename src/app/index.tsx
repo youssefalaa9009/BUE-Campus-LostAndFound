@@ -12,6 +12,18 @@ export default function Index() {
       <Link href="/campusMap">
         <Text className="text-white mt-4">Open Map</Text>
       </Link>
+
+      <Link href="/Homescreen">
+        <Text className="text-white mt-4">Open Home</Text>
+      </Link>
+
+      <Link href="/notifications">
+        <Text className="text-white mt-4">Open Notifications</Text>
+      </Link>
+
+      <Link href="/QRCodeScan">
+        <Text className="text-white mt-4">Open QR Code</Text>
+      </Link>
     </SafeAreaView>
   );
 }
