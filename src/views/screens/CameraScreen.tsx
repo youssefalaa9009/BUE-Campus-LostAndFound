@@ -1,21 +1,12 @@
-import { Modal, View, Pressable, Text } from "react-native";
+import { View, Pressable, Text } from "react-native";
 import { X, KeyRound, ImageIcon, Zap } from "lucide-react-native";
 import { CameraView } from "expo-camera";
 import { useCameraViewModel } from "@/viewmodels/useCameraViewModel";
 
-type Props = {
-    visible: boolean;
-    photoCount: number;
-    maxPhotos: number;
-    onCapture: (uri: string) => void;
-    onClose: () => void;
-};
-
-export default function CameraModal({ visible, photoCount, maxPhotos, onCapture, onClose }: Props) {
-    const vm = useCameraViewModel({ photoCount, maxPhotos });
+export default function CameraScreen() {
+    const vm = useCameraViewModel();
 
     return (
-        <Modal visible={visible} animationType="slide">
             <View className="flex-1 bg-black">
                 <View className="flex-1">
                     {vm.hasPermission ? (
@@ -36,7 +27,7 @@ export default function CameraModal({ visible, photoCount, maxPhotos, onCapture,
                         {/* top row */}
                         <View className="flex-row items-center justify-between">
 
-                            <Pressable onPress={onClose} className="size-12 rounded-2xl bg-black/70 items-center justify-center">
+                            <Pressable onPress={vm.close} className="size-12 rounded-2xl bg-black/70 items-center justify-center">
                                 <X size={20} color="white" />
                             </Pressable>
 
@@ -84,6 +75,5 @@ export default function CameraModal({ visible, photoCount, maxPhotos, onCapture,
 
 
             </View>
-        </Modal>
     );
 }

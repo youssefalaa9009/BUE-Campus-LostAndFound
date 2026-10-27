@@ -11,6 +11,7 @@ export default function RootLayout() {
       <Stack.Screen name="campusMap" options={tabScreen} />
       <Stack.Screen name="myItems" options={tabScreen} />
       <Stack.Screen name="reportItem" options={{ presentation: "modal" }} />
+      <Stack.Screen name="camera" options={{ presentation: "fullScreenModal" }} />
       <Stack.Screen name="itemDetails" />
       <Stack.Screen name="chat" />
       <Stack.Screen name="notifications" />

@@ -3,7 +3,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { X, Camera, MapPin } from "lucide-react-native";
 import { Image } from "expo-image";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import CameraModal from "@/views/components/CameraModal";
 import colors from "@/constants/colors";
 import { useReportItemViewModel } from "@/viewmodels/useReportItemViewModel";
 
@@ -203,14 +202,6 @@ export default function ReportItemScreen() {
                 </Pressable>
 
             </ScrollView>
-
-            <CameraModal
-                visible={vm.cameraOpen}
-                photoCount={vm.photos.length}
-                maxPhotos={vm.maxPhotos}
-                onCapture={vm.addPhoto}
-                onClose={vm.closeCamera}
-            />
         </SafeAreaView>
     );
 }

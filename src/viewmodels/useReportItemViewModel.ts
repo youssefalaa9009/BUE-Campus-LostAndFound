@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Platform } from "react-native";
-import { router } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import { CAMPUS_LOCATIONS } from "@/constants/locations";
 import { CATEGORIES } from "@/constants/categories";
+import { MAX_PHOTOS } from "@/constants/photos";
 import { ItemMode, HeldAt } from "@/models/item";
-
-const MAX_PHOTOS = 3;
+import { clearDraftPhotos, getDraftPhotos, removeDraftPhoto } from "@/services/photoDraftService";
 
 export function useReportItemViewModel() {
     const [mode, setMode] = useState<ItemMode>("lost");
@@ -19,8 +19,15 @@ export function useReportItemViewModel() {
     const [heldAt, setHeldAt] = useState<HeldAt>("finder");
     const [securityQuestion, setSecurityQuestion] = useState("");
     const [securityAnswer, setSecurityAnswer] = useState("");
-    const [photos, setPhotos] = useState<string[]>([]);
-    const [cameraOpen, setCameraOpen] = useState(false);
+    const [photos, setPhotos] = useState<string[]>(getDraftPhotos());
+
+    useFocusEffect(
+        useCallback(() => {
+            setPhotos(getDraftPhotos());
+        }, [])
+    );
+
+    useEffect(() => clearDraftPhotos, []);
 
     const query = location.toLowerCase();
     const matches = CAMPUS_LOCATIONS.filter((place) =>
@@ -53,7 +60,6 @@ export function useReportItemViewModel() {
 
     return {
         categories: CATEGORIES,
-        maxPhotos: MAX_PHOTOS,
 
         mode, setMode,
         category, setCategory,
@@ -72,12 +78,12 @@ export function useReportItemViewModel() {
 
         photos,
         canAddPhoto: photos.length < MAX_PHOTOS,
-        addPhoto: (uri: string) => setPhotos([...photos, uri]),
-        removePhoto: (uri: string) => setPhotos(photos.filter((p) => p !== uri)),
+        removePhoto: (uri: string) => {
+            removeDraftPhoto(uri);
+            setPhotos(getDraftPhotos());
+        },
 
-        cameraOpen,
-        openCamera: () => setCameraOpen(true),
-        closeCamera: () => setCameraOpen(false),
+        openCamera: () => router.push("/camera"),
 
         close: () => router.back(),
     };

@@ -1,16 +1,17 @@
 import { useCameraPermissions } from "expo-camera";
+import { router } from "expo-router";
+import { MAX_PHOTOS } from "@/constants/photos";
+import { addDraftPhoto, getDraftPhotos } from "@/services/photoDraftService";
 
-type Options = {
-    photoCount: number;
-    maxPhotos: number;
-};
-
-export function useCameraViewModel({ photoCount, maxPhotos }: Options) {
+export function useCameraViewModel() {
     const [permission, requestPermission] = useCameraPermissions();
+    const photoCount = getDraftPhotos().length;
 
     return {
         hasPermission: permission?.granted ?? false,
         requestPermission,
-        photoLabel: `Photo ${photoCount + 1} of ${maxPhotos}`,
+        photoLabel: `Photo ${photoCount + 1} of ${MAX_PHOTOS}`,
+        capture: (uri: string) => addDraftPhoto(uri),
+        close: () => router.back(),
     };
 }
